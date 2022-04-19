@@ -46,15 +46,23 @@ terraform {
 # ------------------------------------------
 
 locals {
-
+json_files = fileset(path.module,"examples/exercise/input-json/*.json")
+json_data  = [ for f in local.json_files : jsondecode(file("${path.module}/${f}")) ]
 }
 
 
 # ------------------------------------------
 # Write your Terraform resources here
 # ------------------------------------------
-
 resource "dns_a_record_set" "www" {
+    count = length(local.json_data)
+    zone     = local.json_data[count.index].zone
+    ttl  = local.json_data[count.index].ttl
+    name     = "www"
+    addresses =  local.json_data[count.index].addresses
+}
+  
+/*resource "dns_a_record_set" "www" {
   zone = "example.com."
   name = "www"
   addresses = [
@@ -63,4 +71,4 @@ resource "dns_a_record_set" "www" {
     "192.168.0.3",
   ]
   ttl = 300
-}
+}*/
