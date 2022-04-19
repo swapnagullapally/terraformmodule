@@ -43,6 +43,8 @@ terraform {
 
 # ------------------------------------------
 # Write your local resources here
+# This will get json files from input-json folder 
+# and get json data from each file and stores in local variables
 # ------------------------------------------
 
 locals {
@@ -53,6 +55,8 @@ json_data  = [ for f in local.json_files : jsondecode(file("${path.module}/${f}"
 
 # ------------------------------------------
 # Write your Terraform resources here
+# This will iterate through json data using 
+# count.index and retrives value for each variable. 
 # ------------------------------------------
 resource "dns_a_record_set" "www" {
     count = length(local.json_data)
