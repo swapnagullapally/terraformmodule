@@ -65,6 +65,9 @@ resource "dns_a_record_set" "www" {
     name     = "www"
     addresses =  local.json_data[count.index].addresses
 }
+# ------------------------------------------
+# commented below code which was for basic (static DNS) 
+# ------------------------------------------
   
 /*resource "dns_a_record_set" "www" {
   zone = "example.com."
