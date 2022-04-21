@@ -8,7 +8,7 @@ Instructions to test this:
    3. Then run " Terraform Plan " 
    4. run "Terraform Apply"
 
-=============================================================
+============================================
 Output would be like below:
 ==========================================================
 
