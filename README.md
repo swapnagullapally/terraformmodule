@@ -1,6 +1,13 @@
 # Terraform Coding Exercise
 
 Please read the [instructions](./INSTRUCTIONS.md) file.
+
+Instructions to test this:
+   1. Clone this code to your local environment 
+   2. navigate to terraformmodule/examples/exercise/  and run " Terraform Init "  
+   3. Then run " Terraform Plan " 
+   4. run "Terraform Apply"
+
 =============================================================
 Output would be like below:
 ==========================================================
